@@ -1,8 +1,12 @@
 CC=gcc
-CFLAGS=
+CFLAGS=-Wall
 EXE=main
 
-all: $(EXE)
+all: $(EXE).out
 
-%: %.c
+%.out: %.c
+	@ echo "Compiling"
 	$(CC) $(CFLAGS) $< -o $@ $(LFLAGS)
+
+clean:
+	rm -rf *.out *~
