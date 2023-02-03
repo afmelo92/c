@@ -3,6 +3,7 @@
 */
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 float celsius_farenheit(float temp, char mode) {
     mode = toupper(mode);
@@ -14,26 +15,29 @@ float celsius_farenheit(float temp, char mode) {
     } else if(mode == 'C') {
       result = (temp*1.8)+32;
       return result;
-    } else {
-      printf("Please, select between C and F modes only.\n");
-      return -1;
     }
 }
 
 void main(void) {
-  printf("32 celsius to farenheit: %.2f\n", celsius_farenheit(32, 'c'));
-  printf("64 celsius to farenheit: %.2f\n", celsius_farenheit(64, 'c'));
-  printf("12 celsius to farenheit: %.2f\n", celsius_farenheit(12, 'c'));
-  printf("156 celsius to farenheit: %.2f\n", celsius_farenheit(156, 'c'));
-  printf("-3 celsius to farenheit: %.2f\n", celsius_farenheit(-3, 'c'));
-  printf("0 celsius to farenheit: %.2f\n", celsius_farenheit(0, 'c'));
+  float temp = 0;
+  char op;
 
-  printf("0 celsius to KELVIN: %.2f\n", celsius_farenheit(0, 'k'));
+  do
+  {
+    printf("\nSelect mode:\n(C)elsius\n(F)arenheit\n(Q)uit\n");
+    scanf(" %c", &op);
 
-  printf("32 farenheit to celsius: %.2f\n", celsius_farenheit(32, 'f'));
-  printf("64 farenheit to celsius: %.2f\n", celsius_farenheit(64, 'f'));
-  printf("12 farenheit to celsius: %.2f\n", celsius_farenheit(12, 'f'));
-  printf("156 farenheit to celsius: %.2f\n", celsius_farenheit(156, 'f'));
-  printf("-3 farenheit to celsius: %.2f\n", celsius_farenheit(-3, 'f'));
-  printf("0 farenheit to celsius: %.2f\n", celsius_farenheit(0, 'f'));
+    system("clear");
+
+    if(toupper(op) == 'C'){
+      printf("\nInsert temperature in Celsius: ");
+      scanf(" %f",&temp);
+      printf("\n\n%.2f celsius to farenheit: %.2f\n", temp, celsius_farenheit(temp, 'c'));
+    } else if(toupper(op) == 'F') {
+      printf("\nInsert temperature in Fahrenheit: ");
+      scanf(" %f",&temp);
+      printf("\n\n%.2f farenheit to celsius: %.2f\n", temp, celsius_farenheit(temp, 'f'));
+    }
+
+  } while (toupper(op) != 'Q');
 }
