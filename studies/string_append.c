@@ -1,5 +1,5 @@
 /**
- * COUNTS THE NUMBER OF VOWELS IN A WORD
+ * CONCAT TWO STRINGS WITH DYNAMIC MEMORY ALLOC
 */
 #include <stdio.h>
 #include <stdlib.h>
