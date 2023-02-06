@@ -15,14 +15,11 @@ char *string_append(char *s1, char *s2) {
   for (int i = 0; i < s1len; i++)
   {
     new_word[i] = s1[i];
-    printf("s1[%d]: %c\n", i, s1[i]);
   }
 
   for (int i = 0; i < s2len; i++)
   {
     new_word[i+s1len] = s2[i];
-    printf("s2[%d]: %c\n", i, s2[i]);
-
   }
   
   new_word[new_length - 1] = '\0';
