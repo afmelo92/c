@@ -40,17 +40,5 @@ void main(void) {
   char binary[] = "11111111";
 
   printf("binary %s is equal to %d in decimal\n", binary, binary_to_decimal(binary));
-
-  // do
-  // {
-  //   system("clear");
-  //   printf("Insert word to check the number of vowels: ");
-  //   scanf(" %s", word1);
-  //   printf("\n\nThere are %d vowels in the word %s\n\n", vowel_counter(word), word);
-  //   printf("Wanna try again? (Y)es or (N)o: ");
-  //   scanf(" %c", &op);
-  // } while (toupper(op) == 'Y');
-  
-
   
 }
