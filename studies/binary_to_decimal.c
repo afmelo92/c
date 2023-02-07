@@ -36,9 +36,23 @@ int binary_to_decimal(char *binary) {
   return result;
 }
 
+int binary_to_decimal_new(char *binary) {
+  int blen = strlen(binary);
+  int total = 0;
+  int dec = 1;
+
+  for (int i = (blen - 1); i >= 0; i--)
+  {
+    if(binary[i] == '1') total += dec;
+    dec *= 2;
+  }
+  return total;
+}
+
 void main(void) {
-  char binary[] = "11111111";
+  char binary[] = "10101";
 
   printf("binary %s is equal to %d in decimal\n", binary, binary_to_decimal(binary));
-  
+  printf("binary %s is equal to %d in decimal\n", binary, binary_to_decimal_new(binary));
+
 }
