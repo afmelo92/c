@@ -30,7 +30,13 @@ void main(void) {
     }
     printf("Insert distance in %s: ", mode == 1 ? "Km" : "Miles");
     scanf(" %f", &distance);
-    printf("%f %s equal to %f %s\n", distance, mode == 1 ? "Km" : "Miles", km_to_miles(distance, mode), mode == 1 ? "Miles" : "KM");
+    
+    if(distance > 0) {
+      printf("%f %s equal to %f %s\n", distance, mode == 1 ? "Km" : "Miles", km_to_miles(distance, mode), mode == 1 ? "Miles" : "KM");
+    } else {
+      printf("Distance to convert should be greaer than zero");
+    }
+
     printf("\nWanna try again? (Y)es or (N)o: ");
     scanf(" %c", &op);
   } while (toupper(op) == 'Y');
