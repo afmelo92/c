@@ -9,36 +9,65 @@ void print_array(int *arr, int len) {
   printf("\n");
 }
 
-void rotate_array(int *arr, int len, int times) {
-  int tmp[len];
-  int tmp_initial = 0;
-  int initial = times + 1;
+void rotate_array_left(int *arr, int len, int times) {
+  int tmp[times];
 
-  if(times < len) {
+  if(times > len) {
+    times = times % len;
+  }
+
+  if(times > 0) {
     for (int i = 0; i < times; i++)
     {
       tmp[i] = arr[i];
     }
 
-    for (int i = 0; initial <= len; i++)
+    for (int i = 0; (i + times) < len; i++)
     {
-      arr[i] = arr[initial - 1];
-      initial++;
+      arr[i] = arr[i + times];
+    }
+     
+    for (int i = len - times, j = 0; i < len; i++, j++)
+    {
+      arr[i] = tmp[j];
+    }
+  }
+}
+
+void rotate_array_right(int *arr, int len, int times) {
+  int tmp[times];
+  
+  if(times > len) {
+    times = times % len;
+  }
+
+  if(times > 0) {
+    for (int i = 0; i < times; i++)
+    {
+      tmp[i] = arr[len - times + i];
     }
 
-    for (int i = len - times; i <= len; i++, tmp_initial++)
+    for (int i = (len - times - 1), j = len - 1; i >= 0; i--, j--)
     {
-      arr[i] = tmp[tmp_initial];
+      arr[j] =  arr[i];
     }
-  } else if(times > len) {
-    printf("\nRotation number must be less than or equal length\n\n");
+
+    for (int i = 0; i < times; i++)
+    {
+      arr[i] = tmp[i];
+    }
   }
 }
 
 void main(void) {
   int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
+  printf("Normal: ");
   print_array(array, 9);
-  rotate_array(array, 9, 4);
+  rotate_array_right(array, 9, 1);
+  printf("\nRight: ");
+  print_array(array, 9);
+  rotate_array_left(array, 9, 2);
+  printf("\nLeft: ");
   print_array(array, 9);
 }
