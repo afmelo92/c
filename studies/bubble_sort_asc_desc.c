@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 void uppercase_string(char *string) {
   while(*string) {
@@ -10,32 +11,37 @@ void uppercase_string(char *string) {
 }
 
 void bubble_sort(int *arr, int len, char *order) {
-  int tmp;
   int length = strlen(order);
+  int i = 0;
+  bool swapped = false;
   char word[length];
   
   strcpy(word, order);
-
   uppercase_string(word);
 
   if(strcmp(word, "ASC") || strcmp(word, "DESC")){
-    for (int i = 0; i < len; i++) {
-      for (int j = 0; j < len; j++) {
-        if(strcmp(word, "DESC")) {
-          if(arr[i] < arr[j]) {
-            tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
+    do {
+      swapped = false;
+      for (int j = 0; j < (len - 1 - i); j++)
+      {
+        if(strcmp(word, "ASC")) {
+          if(arr[j] < arr[j+1]) {
+            int aux = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j+1] = aux;
+            swapped = true;
           }
         } else {
-          if(arr[i] > arr[j]) {
-            tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
+          if(arr[j] > arr[j+1]) {
+            int aux = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j+1] = aux;
+            swapped = true;
           }
         }
       }
-    }
+      i++;
+    } while (swapped);
   }
 }
 
