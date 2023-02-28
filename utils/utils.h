@@ -87,6 +87,15 @@ void uppercase_string(char *string)
   }
 }
 
+void lowercase_string(char *string)
+{
+  while (*string)
+  {
+    *string = tolower(*string);
+    string++;
+  }
+}
+
 void trim_leading_spaces(char *string)
 {
   int i = 0;
