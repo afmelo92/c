@@ -1,0 +1,1 @@
+int main(void) { int ninja = 0; ninja = ninja + 1; printf("%d", ninja); return 0;}
